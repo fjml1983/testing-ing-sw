@@ -1,0 +1,29 @@
+:root {
+  --ink: #22201c;
+  --ink-soft: #5e554b;
+  --line: #dfd1bf;
+  --card: #fffef9;
+  --accent: #16688a;
+  --danger: #8f2f2f;
+  --focus: #f09f1f;
+  font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(255, 209, 140, 0.34), transparent 30%),
+    radial-gradient(circle at 94% 80%, rgba(128, 188, 228, 0.25), transparent 35%),
+    linear-gradient(180deg, #f9efe1, #efe7d8);
+}
