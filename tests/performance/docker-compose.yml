@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # Base de datos para guardar los resultados de k6
+  influxdb:
+    image: influxdb:1.8
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=k6
+
+  # Visualización de gráficas
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000" # Acceso en http://localhost:3001
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    depends_on:
+      - influxdb
+
+  # El ejecutor de pruebas
+  k6:
+    image: grafana/k6:latest
+    volumes:
+      - ./tests:/scripts # Mapea tu carpeta de tests local
+    environment:
+      - K6_OUT=influxdb=http://influxdb:8086/k6
+    depends_on:
+      - influxdb
