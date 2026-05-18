@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Base de datos para guardar los resultados de k6
   influxdb:
@@ -27,5 +25,6 @@ services:
       - ./tests:/scripts # Mapea tu carpeta de tests local
     environment:
       - K6_OUT=influxdb=http://influxdb:8086/k6
+    command: run /scripts/stress-test.js
     depends_on:
       - influxdb
