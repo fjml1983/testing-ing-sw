@@ -1,7 +1,7 @@
 const request = require('supertest');
 const { createApp } = require('../app');
 
-describe('Integracion API /api/operations', () => {
+describe('Pruebas de Integracion API /api/operations', () => {
   let app;
   let closeDatabase;
 
@@ -100,5 +100,35 @@ describe('Integracion API /api/operations', () => {
 
     expect(response.status).toBe(400);
     expect(response.body.message).toBe('Un socio solo puede rentar juegos Xbox.');
+  });
+});
+
+describe('Pruebas de Integracion API con falla de base de datos', () => {
+  test('GET retorna 500 cuando la base esta cerrada', async () => {
+    const instance = createApp({ dbPath: ':memory:' });
+    await instance.closeDatabase();
+
+    const response = await request(instance.app).get('/api/operations');
+
+    expect(response.status).toBe(500);
+    expect(response.body.message).toBe('No se pudieron obtener las operaciones.');
+  });
+
+  test('POST retorna 500 cuando la base esta cerrada', async () => {
+    const instance = createApp({ dbPath: ':memory:' });
+    await instance.closeDatabase();
+
+    const payload = {
+      title: 'Rocky 3',
+      year: '2002',
+      format: 'DVD',
+      operation: 'venta',
+      memberName: '',
+    };
+
+    const response = await request(instance.app).post('/api/operations').send(payload);
+
+    expect(response.status).toBe(500);
+    expect(response.body.message).toBe('No se pudo guardar la operacion.');
   });
 });
