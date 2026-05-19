@@ -1,12 +1,22 @@
-# IS-26 Testing - Base didactica (sin pruebas)
+# IS-26 Testing - Pruebas de integración incluidas en frontend y backend.
 
-Proyecto base para ilustrar en el futuro pruebas de software.
+Proyecto que integra tecnologías de pruebas para realizar pruebas de integración.
 
 ## Stack
 
 - Frontend: React + Vite
 - Backend: Express
 - Base de datos: SQLite (archivo local `server/store.sqlite`)
+
+# Tecnologías de  prueba
+
+Prueba del frontend
+- VITEST + OpenAPI + Mock(MSW)
+- Frontend (Simulamos el backend)
+
+Prueba del backend
+- JEST + SUPERTEST
+- Backend (Simulamos el frontend)
 
 ## Regla para socio/no socio
 
@@ -29,6 +39,24 @@ Para esta primera version se usa la siguiente regla:
 - `Formato`: opciones `DVD` o `Xbox`, obligatorio.
 - `Operacion`: opciones `venta` o `renta`, obligatorio.
 - `Nombre del socio`: alfanumerico con espacios (si va vacio => no socio).
+
+## Ejecutar las pruebas del proyecto
+
+Abrir 2 terminales:
+
+### 1) Backend
+
+```bash
+cd server
+npm run test
+```
+
+### 2) Frontend
+
+```bash
+cd client
+npm run test
+```
 
 ## Ejecutar el proyecto
 
