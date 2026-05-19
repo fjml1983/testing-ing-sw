@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
 const API_URL = 'http://localhost:3002/api/operations'
