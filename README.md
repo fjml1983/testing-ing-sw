@@ -1,6 +1,10 @@
-# IS-26 Testing - Base didactica (sin pruebas)
+# IS-26 Testing - Pruebas de sistema
 
-Proyecto base para ilustrar en el futuro pruebas de software.
+Proyecto base para ilustrar el manejo de tecnologías de pruebas de sistema e2e y performance.
+
+## Tecnologías de prueba a nivel sistema
+- Pruebas de funcionalidad e2e: Playwright
+- Pruebas de desempeño: Grafana/k6
 
 ## Stack
 
